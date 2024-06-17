@@ -7,33 +7,54 @@
     <style>
         /* Style for the mind map nodes */
         .node {
-            cursor: pointer;
-            padding: 10px;
-            border: 1px solid #ccc;
+            position: absolute;
+            width: 100px;
+            height: 100px;
             background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
         }
-        .node:hover {
-            background-color: #e0e0e0;
-        }
-        .node .children {
-            display: none;
-            margin-left: 20px;
+        .line {
+            position: absolute;
+            background-color: #ccc;
+            height: 2px;
+            width: 100px;
+            transform-origin: left center;
         }
     </style>
 </head>
 <body>
-    <div class="node" onclick="toggleChildren(this)">
+    <!-- Node 1 -->
+    <div class="node" style="top: 50px; left: 200px;" onclick="toggleChildren(this)">
         Node 1
+        <div class="line" style="top: 50px; left: 150px;"></div>
         <div class="children">
-            <div class="node">Child 1.1</div>
-            <div class="node">Child 1.2</div>
+            <div class="node" style="top: 150px; left: 100px;">Child 1.1</div>
+            <div class="node" style="top: 150px; left: 250px;">Child 1.2</div>
         </div>
     </div>
-    <div class="node" onclick="toggleChildren(this)">
+
+    <!-- Node 2 -->
+    <div class="node" style="top: 200px; left: 100px;" onclick="toggleChildren(this)">
         Node 2
+        <div class="line" style="top: 200px; left: 150px;"></div>
         <div class="children">
-            <div class="node">Child 2.1</div>
-            <div class="node">Child 2.2</div>
+            <div class="node" style="top: 300px; left: 50px;">Child 2.1</div>
+            <div class="node" style="top: 300px; left: 200px;">Child 2.2</div>
+        </div>
+    </div>
+
+    <!-- Node 3 -->
+    <div class="node" style="top: 200px; left: 300px;" onclick="toggleChildren(this)">
+        Node 3
+        <div class="line" style="top: 200px; left: 250px;"></div>
+        <div class="children">
+            <div class="node" style="top: 300px; left: 250px;">Child 3.1</div>
+            <div class="node" style="top: 300px; left: 400px;">Child 3.2</div>
         </div>
     </div>
 
@@ -41,7 +62,14 @@
         // Function to toggle the visibility of children nodes
         function toggleChildren(node) {
             const children = node.querySelector('.children');
-            children.style.display = children.style.display === 'block' ? 'none' : 'block';
+            const lines = node.querySelectorAll('.line');
+            if (children.style.display === 'block') {
+                children.style.display = 'none';
+                lines.forEach(line => line.style.display = 'none');
+            } else {
+                children.style.display = 'block';
+                lines.forEach(line => line.style.display = 'block');
+            }
         }
     </script>
 </body>
