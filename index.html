@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data+1</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  nav {
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    text-align: center; /* Center the content horizontally */
+  }
+  .menu-icon {
+    display: none;
+    cursor: pointer;
+  }
+  .menu-links {
+    display: flex;
+  }
+  .menu-links a {
+    color: #000;
+    text-decoration: none;
+    padding: 0 10px;
+  }
+  .navleft {
+    color: #000;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 45%;
+  }
+  
+  .navright {
+    color: #000;
+    display: flex;
+    font-size: 20px;
+    justify-content: right;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 45%;
+  }
+
+
+
+  .section-insider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .section-left {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    width: 65%;
+    height: 100%;
+  }
+
+  .section-left-inner {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    margin-right: 5%;
+    border-radius: 25px;
+  }
+
+  .section-right {
+    display: block;
+    justify-content: right;
+    align-items: center;
+    width: 36%;
+    height: 100%;
+  }
+
+  .section-tab-one {
+    height: 47%;
+    width: 100%;
+    background-color: #6beee7; /* #16F2D9*/
+    border-radius: 25px;
+    margin-bottom: 25px;
+  }
+
+  .section-tab-two {
+    height: 47%;
+    width: 100%;
+    background-color: #f88b7d;
+    border-radius: 25px;
+  } 
+  
+  .blockzero {
+    margin-top: 50px;
+  }
+
+  .section-inside-blockzero {
+    background-color: #ffffff; /* f0f0f0 */
+    margin-bottom: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: 25px; /* Adding rounded corners */
+  }
+
+
+
+  #ctointro {
+    background-color: #fafafa;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  #ctointer {
+    background-color: #ffffff;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  #ctoadvan {
+    background-color: #eceff1;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+  #ctointera {
+    background-color: #ffffff;
+    height: 50px;
+    border-radius: 10px;
+  }
+
+
+
+
+  @media screen and (max-width: 600.9px) {
+    .menu-links {
+      display: none;
+      flex-direction: column;
+      background-color: #fff;
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      z-index: 999;
+    }
+    
+    .menu-links.show {
+      display: flex;
+    }
+    .menu-icon {
+      display: block;
+    }
+    .content {
+        margin: 15px; /* Increased left and right margins */
+    }
+    .blockzero {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-inside-blockzero {
+        height: 450px;
+        width: 100%;
+    }
+
+  }
+
+  @media screen and (min-width: 601px) and (max-width: 700.9px) {
+    .content {
+        width: 90%;
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: auto;
+    }
+    .blockzero {
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .section-inside-blockzero {
+        height: 450px;
+        width: 100%;
+    }
+
+  }
+  
+  @media screen and (min-width: 701px) and (max-width: 960.9px) {
+    .content {
+        width: 95%;
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: auto;
+    }
+    .blockzero {
+        justify-content: center;
+        align-items: center;
+    }
+   
+    .section-inside-blockzero {
+        height: 450px;
+        width: 100%;
+    }
+
+  }
+
+  @media screen and (min-width: 961px) {
+    .content {
+        width: 1120px; /* 1910px */
+        max-width: 100%;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+
+    .blockzero {
+        justify-content: top;
+        align-items: top;
+        display: block;
+        height:auto;
+    }
+
+    .section-inside-blockzero {
+        height: 400px;
+        width: 100%;
+    }
+
+    .opener {
+      width: 450px;
+    }
+    
+
+  }
+  
+
+
+
+  .opener {
+    font-size: 40px;
+    padding-bottom: 40px;
+  }
+  
+
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="menu-icon">&#9776;</div>
+  <div class="navleft">
+    <div class="menu-links">
+      <!--a href="#"><img src="dataplusone.png" style="height: 80px; width: 80px;"/></a-->
+    </div>
+  </div>
+  <div class="navright">
+    <div class="menu-links">
+      <a href="#">courses</a>
+      <a href="#">subscribe</a>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="content">
+    <div class="opener" style="display: block; text-align: start; width: 100%; translate: none; rotate: none; scale: none; transform: translate(0px, 0%);"> hone your data skills today</div>
+    
+    <div class="blockzero">
+        
+            <div class="section-inside-blockzero courses">
+              <div class="section-insider">
+                <div class="section-left">
+                    <div class="section-left-inner" style="overflow: hidden;">
+                      <a href="#"><img src="datahome.png" style="height: 100%; width: 100%; "/></a>
+                    </div>
+                </div>
+                <div class="section-right">
+                  <div class="section-tab-one"></div>
+                  <div class="section-tab-two"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="section-inside-blockzero library" style="border: solid 1px #dadada">
+              <img src="stata_logo.png"/>
+              <p>Introduction</p>
+             
+            </div>
+
+            <div class="section-inside-blockzero library" style="border: solid 1px #dadada">
+              <img src="surveycto_logo.png"/>
+              <div id="ctointro"><p>Introduction</p></div>
+              
+            </div>
+            
+    </div>
+
+</div>
+
+<script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const menuLinks = document.querySelector('.menu-links');
+
+  menuIcon.addEventListener('click', () => {
+    menuLinks.classList.toggle('show');
+  });
+</script>
+
+</body>
+</html>
