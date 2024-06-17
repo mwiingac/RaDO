@@ -1,0 +1,25 @@
+/*  jmnode {
+            max-width: initial;
+          }
+          jmnode > a {
+            text-decoration: none;
+            color: white;
+          }
+          .jsmind-inner {
+              overflow: initial;
+            }
+          .mindmap {
+            margin: 10px 40px;
+          }
+
+          svg {
+            border: 1px solid #333;
+            width: 1200px;
+          }
+          a {
+            fill: #004c99;
+          }
+          a:hover {
+            fill: #09f;
+          }
+ */
