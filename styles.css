@@ -3,7 +3,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     margin: 0;
     background-color: #f9f9f9;
 }
@@ -53,4 +54,5 @@ svg#line {
 .line {
     stroke: black;
     stroke-width: 1.5px;
+    z-index: 100;
 }
