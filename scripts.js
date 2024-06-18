@@ -22,9 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         { name: "Save all files on Box" },
                         { name: "Save all PII files in Cryptomator Vaults" }
                     ]
+                }
+            ]
          },
         // Add other nodes here
-        { id: '', text: 'Case 104570 - Investigate adding Matomo to Base Platform', x: '30%', y: '70%' },
+        // { id: '', text: 'Case 104570 - Investigate adding Matomo to Base Platform', x: '30%', y: '70%' }
         // More nodes...
     ];
 
