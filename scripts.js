@@ -1,74 +1,45 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const mindmapContainer = document.getElementById('mindmap-container');
+document.addEventListener("DOMContentLoaded", function() {
+    const lines = document.getElementById('lines');
 
-    const nodes = [
+    function connectNodes(node1Id, node2Id) {
+        const node1 = document.getElementById(node1Id);
+        const node2 = document.getElementById(node2Id);
         
+        const pos1 = node1.getBoundingClientRect();
+        const pos2 = node2.getBoundingClientRect();
         
-        { id: 'project-open', text: 'Project Open',         x: '25%', y: '11%' },
-        { id: 'survey-development', text: 'Survey Dev.',    x: '25%', y: '24%' },
-        { id: 'survey-preparation', text: 'Survey Prep.',   x: '25%', y: '37%' },
-        { id: 'research-node', text: 'Research',            x: '40%', y: '50%'},
-        { id: 'survey', text: 'Survey',                     x: '25%', y: '63%' },
-        { id: 'post-survey', text: 'Post Survey',           x: '25%', y: '76%' },
-        { id: 'project-close', text: 'Project Close',       x: '25%', y: '89%' },
+        const x1 = pos1.left + pos1.width / 2;
+        const y1 = pos1.top + pos1.height / 2;
+        const x2 = pos2.left + pos2.width / 2;
+        const y2 = pos2.top + pos2.height / 2;
         
-        { id: 'center-node', text: 'RaDO',         x: '50%', y: '50%' },
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', x1);
+        line.setAttribute('y1', y1);
+        line.setAttribute('x2', x2);
+        line.setAttribute('y2', y2);
+        line.classList.add('line');
         
-        { id: 'data-collection', text: 'Collection',        x: '70%', y: '11%' },
-        { id: 'data-management', text: 'Management',        x: '70%', y: '24%' },
-        { id: 'data-cleaning', text: 'Clenaing',            x: '70%', y: '37%' },
-        { id: 'data-node', text: 'Data',                    x: '60%', y: '50%' },
-        { id: 'data-sharing', text: 'Sharing',              x: '70%', y: '63%' },
-        { id: 'data-analysis', text: 'Analysis',            x: '70%', y: '76%' },
-        { id: 'data-reporting', text: 'Reporting',          x: '70%', y: '89%' }
+        lines.appendChild(line);
+    }
 
-        /*
-        { id: 'po-establish-norms', text: 'Establish working norms', x: '30%', y: '70%' },
-        { id: 'po-doc-research-design', text: 'Document research design', x: '30%', y: '70%' },
-        { id: 'po-budget', text: 'Budget and staffing', x: '30%', y: '70%' },
-        { id: 'po-aea', text: 'Register project with AEA', x: '30%', y: '70%' },
-        { id: 'po-equipmet-proc', text: 'Equipment procurement', x: '30%', y: '70%' },
-        { id: 'po-coms-plan', text: 'Plan for communication with partners', x: '30%', y: '70%' },
-        { id: 'po-plan-cost-analysis', text: 'Plan for cost-effectiveness analysis', x: '30%', y: '70%' },
-        { id: 'po-survey-plan', text: 'Create survey plan before launch', x: '30%', y: '70%' },
-        { id: 'po-open-scto', text: 'Open SurveyCTO server', x: '30%', y: '70%' },
-        { id: 'po-update-myra', text: 'Update MyRA', x: '30%', y: '70%' },
-        { id: 'po-salesforce', text: 'Update Salesforce records', x: '30%', y: '70%' },
-        { id: 'po-box-save', text: 'Save all files on Box', x: '30%', y: '70%' },
-        { id: 'po-pii-vault', text: 'Save all PII files in Cryptomator Vaults', x: '30%', y: '70%' }
-        */
-        // Add other nodes here
-        // { id: '', text: 'Case 104570 - Investigate adding Matomo to Base Platform', x: '30%', y: '70%' }
-        // More nodes...
-    ];
-
-    nodes.forEach(node => {
-        const newNode = document.createElement('div');
-        newNode.classList.add('node');
-        newNode.id = node.id;
-        newNode.style.left = node.x;
-        newNode.style.top = node.y;
-        newNode.textContent = node.text;
-        mindmapContainer.appendChild(newNode);
-        createLine('center-node', node.id);
-    });
+    // Connect RaDO to Research and Data
+    connectNodes('rado', 'research');
+    connectNodes('rado', 'data');
+    
+    // Connect Research to its nodes
+    connectNodes('research', 'project-open');
+    connectNodes('research', 'survey-dev');
+    connectNodes('research', 'survey-prep');
+    connectNodes('research', 'survey');
+    connectNodes('research', 'post-survey');
+    connectNodes('research', 'project-close');
+    
+    // Connect Data to its nodes
+    connectNodes('data', 'collection');
+    connectNodes('data', 'management');
+    connectNodes('data', 'cleaning');
+    connectNodes('data', 'sharing');
+    connectNodes('data', 'analysis');
+    connectNodes('data', 'reporting');
 });
-
-function createLine(fromId, toId) {
-    const container = document.getElementById('mindmap-container');
-    const fromNode = document.getElementById(fromId);
-    const toNode = document.getElementById(toId);
-
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-    line.setAttribute("id", `line-${fromId}-${toId}`);
-    line.setAttribute("x1", fromNode.offsetLeft + fromNode.offsetWidth / 2);
-    line.setAttribute("y1", fromNode.offsetTop + fromNode.offsetHeight / 2);
-    line.setAttribute("x2", toNode.offsetLeft + toNode.offsetWidth / 2);
-    line.setAttribute("y2", toNode.offsetTop + toNode.offsetHeight / 2);
-    line.classList.add('line');
-
-    const svgContainer = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svgContainer.setAttribute("class", "line-container");
-    svgContainer.appendChild(line);
-    container.appendChild(svgContainer);
-}
