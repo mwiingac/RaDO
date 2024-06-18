@@ -10,8 +10,8 @@ body {
 
 #mindmap {
     position: relative;
-    width: 800px;
-    height: 600px;
+    width: 100%;
+    height: 100%;
 }
 
 .node {
@@ -22,6 +22,11 @@ body {
     border-radius: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
+    transition: transform 0.3s;
+}
+
+.node:hover {
+    transform: scale(1.1);
 }
 
 #rado { top: 50%; left: 50%; background-color: black; }
@@ -42,7 +47,7 @@ body {
 #analysis { top: 50%; left: 80%; background-color: #4285f4; }
 #reporting { top: 60%; left: 80%; background-color: #db4437; }
 
-#line {
+line {
     stroke: black;
     stroke-width: 2;
 }
