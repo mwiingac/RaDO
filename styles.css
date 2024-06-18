@@ -44,6 +44,6 @@ body {
 
 #line {
     fill: none;
-    stroke: black;
+    stroke: #555;
     stroke-width: 2px;
 }
