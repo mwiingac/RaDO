@@ -34,7 +34,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#line {
+.line {
     stroke: black;
     stroke-width: 2px;
 }
