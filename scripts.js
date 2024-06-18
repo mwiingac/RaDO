@@ -5,23 +5,23 @@ document.addEventListener("DOMContentLoaded", function() {
         const node1 = document.getElementById(node1Id);
         const node2 = document.getElementById(node2Id);
         
-        const pos1 = node1.getBoundingClientRect();
-        const pos2 = node2.getBoundingClientRect();
+        const pos1 = getCenterPosition(node1);
+        const pos2 = getCenterPosition(node2);
         
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const d = `M ${pos1.x} ${pos1.y} C ${pos1.x + 50} ${pos1.y}, ${pos2.x - 50} ${pos2.y}, ${pos2.x} ${pos2.y}`;
+        path.setAttribute('d', d);
+        path.classList.add('line');
+        lines.appendChild(path);
+    }
+
+    function getCenterPosition(element) {
+        const rect = element.getBoundingClientRect();
         const parentPos = document.getElementById('mindmap').getBoundingClientRect();
-        
-        const x1 = pos1.left + pos1.width / 2 - parentPos.left;
-        const y1 = pos1.top + pos1.height / 2 - parentPos.top;
-        const x2 = pos2.left + pos2.width / 2 - parentPos.left;
-        const y2 = pos2.top + pos2.height / 2 - parentPos.top;
-        
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', x1);
-        line.setAttribute('y1', y1);
-        line.setAttribute('x2', x2);
-        line.setAttribute('y2', y2);
-        line.classList.add('line');
-        lines.appendChild(line);
+        return {
+            x: rect.left + rect.width / 2 - parentPos.left,
+            y: rect.top + rect.height / 2 - parentPos.top
+        };
     }
     
     // Connect RaDO to Research and Data
