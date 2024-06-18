@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Research and Data Orientation</title>
+    <style>
+        /* Style for the mind map */
+        #mindmap {
+          width: 100%;
+          height: 100%;
+        }
+
+        .node circle {
+          fill: #56f5b5;
+          stroke: #56f5b5;
+          stroke-width: 3px;
+        }
+
+        .node text {
+          font: 12px sans-serif;
+        }
+
+        .link {
+          fill: none;
+          stroke: #555;
+          stroke-width: 1.5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="mindmap"></div>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script>
+        // Include your JavaScript here
+        // JavaScript code to create the mind map
+        // Data for the mind map
+        const data = {
+          name: "IPARaDO",
+          children: [
+              {
+                  name: "Research",
+                  children: [
+                      {
+                          name: "Project Open",
+                          children: [
+                              { name: "Establish working norms" },
+                              { name: "Document research design" },
+                              { name: "Budget and staffing" },
+                              { name: "Register project with AEA" },
+                              { name: "Equipment procurement" },
+                              { name: "Plan for communication with partners" },
+                              { name: "Plan for cost-effectiveness analysis" },
+                              { name: "Create survey plan before launch" },
+                              { name: "Open SurveyCTO server" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
+                          ]
+                      },
+                      {
+                          name: "Survey Development",
+                          children: [
+                              { name: "Maintain IRB approval" },
+                              { name: "Create data security plan" },
+                              { name: "Set up encryption before launch" },
+                              { name: "Finalize questionnaire" },
+                              { name: "Program survey" },
+                              { name: "Program back-check form" },
+                              { name: "Program spot-check form" },
+                              { name: "Translate survey into local language" },
+                              { name: "Bench test survey" },
+                              { name: "Encrypt SurveyCTO forms" },
+                              { name: "Set up back check randomization" },
+                              { name: "Create tracking system" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
+                          ]
+                      },
+                      {
+                          name: "Survey Preparation",
+                          children: [
+                              { name: "Set up encryption before launch" },
+                              { name: "Train field managers" },
+                              { name: "Create field protocols and survey manuals" },
+                              { name: "Create safety and security plan" },
+                              { name: "Create plan for charging and storing devices" },
+                              { name: "Set up and encrypt devices" },
+                              { name: "Structure team sizes and daily quotas" },
+                              { name: "create training materials" },
+                              { name: "train and hire field officers" },
+                              { name: "Create data quality assurance plan" },
+                              { name: "Pilot survey" },
+                              { name: "Create reporting system to PIs" },
+                              { name: "Set up feedback mechanism with field managers" },
+                              { name: "Implement false launch" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Maintain IRB approval" },
+                              { name: "Create data security plan" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
+                          ]
+                    },
+                    
+                    {
+                          name: "Survey",
+                          children: [
+                              { name: "Implement soft launch" },
+                              { name: "Accompaniments" },
+                              { name: "Spot-checks" },
+                              { name: "Implement and act on Back-checks" },
+                              { name: "Implement and act on HFCs" },
+                              { name: "Back up data in at least 2 locations" },
+                              { name: "Provide team feedback based on data" },
+                              { name: "Mop-up" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Maintain IRB approval" },
+                              { name: "Maintain data security plan" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
+                          ]
+                  },
+                  {
+                          name: "Post Survey",
+                          children: [
+                              { name: "Clean data and run final checks" },
+                              { name: "Back up data to 2 locations" },
+                              { name: "Downgrade SurveyCTO server" },
+                              { name: "Wipe / store hardware" },
+                              { name: "Check Cryptomator Vault (PII) access" },
+                              { name: "Complete README / project log" },
+                              { name: "Write report" },
+                              { name: "Evaluate survey protocols and document lessons learnt" },
+                              { name: "Publish / update website summary" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Maintain IRB approval" },
+                              { name: "Maintain data security plan" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
+                          ]
+                  },
+                      {
+                        name: "Project Close",
+                        children: [
+                              { name: "Use new UID in de-identified data" },
+                              { name: "Close SurveycTO server" },
+                              { name: "Create plan for handing over or analyzing data" },
+                              { name: "Share final results with partner" },
+                              { name: "Calculate final cost-effectivness analysis" },
+                              { name: "Check PII access" },
+                              { name: "Finalize README" },
+                              { name: "Write final report" },
+                              { name: "Set up plan for data destruction / retention" },
+                              { name: "Wipe / store hardware of all data" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Retire project with all IRBs" },
+                              { name: "Close grants and replicon access" }
+                          ]
+                      }
+                  ]
+              },
+              {
+                  name: "Data",
+                  children: [
+                      { name: "Data Collection" },
+                      { name: "Data Management" },
+                      { name: "Data Cleaning" },
+                      { name: "Data Sharing" },
+                      { name: "Data Analysis" }
+                  ]
+              }
+          ]
+        };
+
+        // Dimensions for the mind map
+        const width = 1480;
+        const height = 2500;
+
+        // Create the SVG container for the mind map
+        const svg = d3.select("#mindmap").append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+        // Create a tree layout
+        const tree = d3.tree()
+          .size([height, width - 350]);
+
+        const root = d3.hierarchy(data);
+
+        tree(root);
+
+        // Create links (lines) between nodes
+        const link = svg.selectAll(".link")
+          .data(root.descendants().slice(1))
+          .enter().append("path")
+          .attr("class", "link")
+          .attr("d", d => `
+              M${d.y},${d.x}
+              C${d.parent.y + 100},${d.x}
+              ${d.parent.y + 100},${d.parent.x}
+              ${d.parent.y},${d.parent.x}
+          `);
+
+        // Create nodes
+        const node = svg.selectAll(".node")
+          .data(root.descendants())
+          .enter().append("g")
+          .attr("class", d => "node" + (d.children ? " node--internal" : " node--leaf"))
+          .attr("transform", d => `translate(${d.y},${d.x})`);
+
+        // Append circles to the nodes
+        node.append("circle")
+          .attr("r", 10);
+
+        // Append labels to the nodes
+        node.append("text")
+          .attr("dy", 3)
+          .attr("x", d => d.children ? -12 : 12)
+          .style("text-anchor", d => d.children ? "end" : "start")
+          .text(d => d.data.name);
+
+    </script>
+</body>
+</html>
