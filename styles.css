@@ -25,9 +25,11 @@ body {
     transition: transform 0.3s;
 }
 
+/*
 .node:hover {
     transform: scale(1.1);
 }
+*/
 
 #rado { top: 50%; left: 50%; background-color: black; }
 #research { top: 30%; left: 35%; background-color: #66b2b2; }
