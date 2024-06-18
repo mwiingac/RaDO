@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const pos1 = node1.getBoundingClientRect();
         const pos2 = node2.getBoundingClientRect();
         
-        const x1 = pos1.left + pos1.width / 2;
-        const y1 = pos1.top + pos1.height / 2;
-        const x2 = pos2.left + pos2.width / 2;
-        const y2 = pos2.top + pos2.height / 2;
+        const x1 = pos1.left + pos1.width / 2 + window.scrollX;
+        const y1 = pos1.top + pos1.height / 2 + window.scrollY;
+        const x2 = pos2.left + pos2.width / 2 + window.scrollX;
+        const y2 = pos2.top + pos2.height / 2 + window.scrollY;
         
         const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         line.setAttribute('x1', x1);

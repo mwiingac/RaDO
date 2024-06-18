@@ -10,8 +10,8 @@ body {
 
 #mindmap {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 800px;
+    height: 600px;
 }
 
 .node {
@@ -21,15 +21,8 @@ body {
     color: white;
     border-radius: 50%;
     text-align: center;
-    /*transform: translate(-50%, -50%);*/
-    transition: transform 0.3s;
+    transform: translate(-50%, -50%);
 }
-
-/*
-.node:hover {
-    transform: scale(1.1);
-}
-*/
 
 #rado { top: 50%; left: 50%; background-color: black; }
 #research { top: 30%; left: 35%; background-color: #66b2b2; }
@@ -49,7 +42,7 @@ body {
 #analysis { top: 50%; left: 80%; background-color: #4285f4; }
 #reporting { top: 60%; left: 80%; background-color: #db4437; }
 
-line {
+#line {
     stroke: black;
     stroke-width: 2;
 }
