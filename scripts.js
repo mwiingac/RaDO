@@ -3,9 +3,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nodes = [
         { id: 'data-node', text: 'Data', x: '40%', y: '60%' },
-        { id: 'research-node', text: 'Research', x: '60%', y: '60%' },
+        { id: 'research-node', text: 'Research', x: '60%', y: '60%',
+            children: [
+                {
+                    name: "Project Open",
+                    children: [
+                        { name: "Establish working norms" },
+                        { name: "Document research design" },
+                        { name: "Budget and staffing" },
+                        { name: "Register project with AEA" },
+                        { name: "Equipment procurement" },
+                        { name: "Plan for communication with partners" },
+                        { name: "Plan for cost-effectiveness analysis" },
+                        { name: "Create survey plan before launch" },
+                        { name: "Open SurveyCTO server" },
+                        { name: "Update MyRA" },
+                        { name: "Update Salesforce records" },
+                        { name: "Save all files on Box" },
+                        { name: "Save all PII files in Cryptomator Vaults" }
+                    ]
+         },
         // Add other nodes here
-        { id: 'case-104570', text: 'Case 104570 - Investigate adding Matomo to Base Platform', x: '30%', y: '70%' },
+        { id: '', text: 'Case 104570 - Investigate adding Matomo to Base Platform', x: '30%', y: '70%' },
         // More nodes...
     ];
 
