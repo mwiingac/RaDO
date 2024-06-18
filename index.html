@@ -35,45 +35,144 @@
         // JavaScript code to create the mind map
         // Data for the mind map
         const data = {
-          name: "Matomo",
+          name: "IPARaDO",
           children: [
               {
-                  name: "Custom Events",
+                  name: "Research",
                   children: [
                       {
-                          name: "Reporting",
+                          name: "Project Open",
                           children: [
-                              { name: "Case 111068 - Customize Matomo to support reports" },
-                              { name: "Case 111538 - Investigate how Matomo might track which report parameters are used" }
+                              { name: "Establish working norms" },
+                              { name: "Document research design" },
+                              { name: "Budget and staffing" },
+                              { name: "Register project with AEA" },
+                              { name: "Equipment procurement" },
+                              { name: "Plan for communication with partners" },
+                              { name: "Plan for cost-effectiveness analysis" },
+                              { name: "Create survey plan before launch" },
+                              { name: "Open SurveyCTO server" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
                           ]
                       },
                       {
-                          name: "Search Pages",
+                          name: "Survey Development",
                           children: [
-                              { name: "Case 111069 - Customize Matomo to support filters, pagination, show more activity on REACT pages" },
-                              { name: "Case 111587 - Customize Matomo to support sorting activity on BACKBONE pages" },
-                              { name: "Case 111606 - Customize Matomo to support filter, show more, pagination activity on BACKBONE pages" },
-                              { name: "Case 111616 - Customize Matomo to support column selector and sort activity on REACT pages" }
+                              { name: "Maintain IRB approval" },
+                              { name: "Create data security plan" },
+                              { name: "Set up encryption before launch" },
+                              { name: "Finalize questionnaire" },
+                              { name: "Program survey" },
+                              { name: "Program back-check form" },
+                              { name: "Program spot-check form" },
+                              { name: "Translate survey into local language" },
+                              { name: "Bench test survey" },
+                              { name: "Encrypt SurveyCTO forms" },
+                              { name: "Set up back check randomization" },
+                              { name: "Create tracking system" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
                           ]
                       },
                       {
-                          name: "Other",
+                          name: "Survey Preparation",
                           children: [
-                              { name: "Case 111070 - Add customization so Matomo can analyze modal activity" }
+                              { name: "Set up encryption before launch" },
+                              { name: "Train field managers" },
+                              { name: "Create field protocols and survey manuals" },
+                              { name: "Create safety and security plan" },
+                              { name: "Create plan for charging and storing devices" },
+                              { name: "Set up and encrypt devices" },
+                              { name: "Structure team sizes and daily quotas" },
+                              { name: "create training materials" },
+                              { name: "train and hire field officers" },
+                              { name: "Create data quality assurance plan" },
+                              { name: "Pilot survey" },
+                              { name: "Create reporting system to PIs" },
+                              { name: "Set up feedback mechanism with field managers" },
+                              { name: "Implement false launch" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Maintain IRB approval" },
+                              { name: "Create data security plan" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
+                          ]
+                    },
+                    
+                    {
+                          name: "Survey",
+                          children: [
+                              { name: "Implement soft launch" },
+                              { name: "Accompaniments" },
+                              { name: "Spot-checks" },
+                              { name: "Implement and act on Back-checks" },
+                              { name: "Implement and act on HFCs" },
+                              { name: "Back up data in at least 2 locations" },
+                              { name: "Provide team feedback based on data" },
+                              { name: "Mop-up" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Maintain IRB approval" },
+                              { name: "Maintain data security plan" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
+                          ]
+                  },
+                  {
+                          name: "Post Survey",
+                          children: [
+                              { name: "Clean data and run final checks" },
+                              { name: "Back up data to 2 locations" },
+                              { name: "Downgrade SurveyCTO server" },
+                              { name: "Wipe / store hardware" },
+                              { name: "Check Cryptomator Vault (PII) access" },
+                              { name: "Complete README / project log" },
+                              { name: "Write report" },
+                              { name: "Evaluate survey protocols and document lessons learnt" },
+                              { name: "Publish / update website summary" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Maintain IRB approval" },
+                              { name: "Maintain data security plan" },
+                              { name: "Save all files on Box" },
+                              { name: "Save all PII files in Cryptomator Vaults" }
+                          ]
+                  },                                                           
+                      {
+                        name: "Project Close",
+                        children: [
+                              { name: "Use new UID in de-identified data" },
+                              { name: "Close SurveycTO server" },
+                              { name: "Create plan for handing over or analyzing data" },
+                              { name: "Share final results with partner" },
+                              { name: "Calculate final cost-effectivness analysis" },
+                              { name: "Check PII access" },
+                              { name: "Finalize README" },
+                              { name: "Write final report" },
+                              { name: "Set up plan for data destruction / retention" },
+                              { name: "Wipe / store hardware of all data" },
+                              { name: "Update MyRA" },
+                              { name: "Update Salesforce records" },
+                              { name: "Retire project with all IRBs" },
+                              { name: "Close grants and replicon access" }
                           ]
                       }
                   ]
               },
               {
-                  name: "Rollout",
+                  name: "Data",
                   children: [
-                      { name: "Case 104570 - Investigate adding Matomo to Base Platform" },
-                      { name: "Case 108842 - Matomo User-level tracking opt-in" },
-                      { name: "Case 110929 - Add out-of-the-box Matomo analytics to Platform" },
-                      { name: "Case 110930 - Investigate using Matomo for/with MTT apps" },
-                      { name: "Case 111180 - Investigate default configurable privacy settings for Matomo" },
-                      { name: "Case 111670 - Reminder to create a resource that documents Matomo mapping e.g., what categories represent" },
-                      { name: "Case 111918 - Matomo - remove numeric identifiers from tracked URLs" }
+                      { name: "Data Collection" },
+                      { name: "Data Management" },
+                      { name: "Data Cleaning" },
+                      { name: "Data Sharing" },
+                      { name: "Data Analysis" }
                   ]
               }
           ]
