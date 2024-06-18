@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nodes = [
         
-        { id: 'research-node', text: 'Research',            x: '45%', y: '50%'},
+        { id: 'research-node', text: 'Research',            x: '40%', y: '55%'},
         { id: 'project-open', text: 'Project Open',         x: '25%', y: '15%' },
         { id: 'survey-development', text: 'Survey Dev.',    x: '25%', y: '30%' },
         { id: 'survey-preparation', text: 'Survey Prep.',   x: '25%', y: '45%' },
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 'post-survey', text: 'Post Survey',           x: '25%', y: '75%' },
         { id: 'project-close', text: 'Project Close',       x: '25%', y: '90%' },
 
-        { id: 'data-node', text: 'Data',                    x: '55%', y: '50%' },
+        { id: 'data-node', text: 'Data',                    x: '60%', y: '55%' },
         { id: 'data-collection', text: 'Collection',        x: '70%', y: '15%' },
         { id: 'data-management', text: 'Management',        x: '70%', y: '30%' },
         { id: 'data-cleaning', text: 'Clenaing',            x: '70%', y: '45%' },
