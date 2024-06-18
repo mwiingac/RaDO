@@ -43,6 +43,7 @@ body {
 #reporting { top: 90%; left: 80%; background-color: #db4437; }
 
 #line {
+    fill: none;
     stroke: black;
-    stroke-width: 2;
+    stroke-width: 2px;
 }
