@@ -2,90 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mind Map</title>
     <style>
-        /* Style for the mind map nodes */
-        .node {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background-color: #f9f9f9;
-            border: 1px solid #ccc;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+        /* Style for the mind map */
+        #mindmap {
+          width: 100%;
+          height: 100vh;
         }
-        .line {
-            position: absolute;
-            background-color: #ccc;
-            height: 2px;
-            width: 100px;
-            transform-origin: left center;
+
+        .node circle {
+          fill: #999;
+          stroke: steelblue;
+          stroke-width: 3px;
         }
-        .curve {
-            position: absolute;
-            stroke: #ccc;
-            stroke-width: 2;
-            fill: none;
+
+        .node text {
+          font: 12px sans-serif;
+        }
+
+        .link {
+          fill: none;
+          stroke: #555;
+          stroke-width: 1.5px;
         }
     </style>
 </head>
 <body>
-    <!-- Node 1 -->
-    <div class="node" style="top: 50px; left: 200px;" onclick="toggleChildren(this)">
-        Node 1
-        <div class="line" style="top: 50px; left: 150px;"></div>
-        <svg class="curve" width="200" height="200">
-            <path d="M150 50 Q200 25 250 50" />
-        </svg>
-        <div class="children">
-            <div class="node" style="top: 150px; left: 100px;">Child 1.1</div>
-            <div class="node" style="top: 150px; left: 250px;">Child 1.2</div>
-        </div>
-    </div>
-
-    <!-- Node 2 -->
-    <div class="node" style="top: 200px; left: 100px;" onclick="toggleChildren(this)">
-        Node 2
-        <div class="line" style="top: 200px; left: 150px;"></div>
-        <svg class="curve" width="200" height="200">
-            <path d="M150 200 Q100 225 50 200" />
-        </svg>
-        <div class="children">
-            <div class="node" style="top: 300px; left: 50px;">Child 2.1</div>
-            <div class="node" style="top: 300px; left: 200px;">Child 2.2</div>
-        </div>
-    </div>
-
-    <!-- Node 3 -->
-    <div class="node" style="top: 200px; left: 300px;" onclick="toggleChildren(this)">
-        Node 3
-        <div class="line" style="top: 200px; left: 250px;"></div>
-        <svg class="curve" width="200" height="200">
-            <path d="M250 200 Q300 225 350 200" />
-        </svg>
-        <div class="children">
-            <div class="node" style="top: 300px; left: 250px;">Child 3.1</div>
-            <div class="node" style="top: 300px; left: 400px;">Child 3.2</div>
-        </div>
-    </div>
-
+    <div id="mindmap"></div>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
     <script>
-        // Function to toggle the visibility of children nodes
-        function toggleChildren(node) {
-            const children = node.querySelector('.children');
-            const lines = node.querySelectorAll('.line');
-            if (children.style.display === 'block') {
-                children.style.display = 'none';
-                lines.forEach(line => line.style.display = 'none');
-            } else {
-                children.style.display = 'block';
-                lines.forEach(line => line.style.display = 'block');
-            }
-        }
+        // JavaScript code to create the mind map
+        // Data for the mind map
+        const data = {
+          name: "Matomo",
+          children: [
+              {
+                  name: "Custom Events",
+                  children: [
+                      {
+                          name: "Reporting",
+                          children: [
+                              { name: "Case 111068 - Customize Matomo to support reports" },
+                              { name: "Case 111538 - Investigate how Matomo might track which report parameters are used" }
+                          ]
+                      },
+                      {
+                          name: "Search Pages",
+                          children: [
+                              { name: "Case 111069 - Customize Matomo to support filters, pagination, show more activity on REACT pages" },
+                              { name: "Case 111587 - Customize Matomo to support sorting activity on BACKBONE pages" },
+                              { name: "Case 111606 - Customize Matomo to support filter, show more, pagination activity on BACKBONE pages" },
+                              { name: "Case 111616 - Customize Matomo to support column selector and sort activity on REACT pages" }
+                          ]
+                      },
+                      {
+                          name: "Other",
+                          children: [
+                              { name: "Case 111070 - Add customization so Matomo can analyze modal activity" }
+                          ]
+                      }
+                  ]
+              },
+              {
+                  name: "Rollout",
+                  children: [
+                      { name: "Case 104570 - Investigate adding Matomo to Base Platform" },
+                      { name: "Case 108842 - Matomo User-level tracking opt-in" },
+                      { name: "Case 110929 - Add out-of-the-box Matomo analytics to Platform" },
+                      { name: "Case 110930 - Investigate using Matomo for/with MTT apps" },
+                      { name: "Case 111180 - Investigate default configurable privacy settings for Matomo" },
+                      { name: "Case 111670 - Reminder to create a resource that documents Matomo mapping e.g., what categories represent" },
+                      { name: "Case 111918 - Matomo - remove numeric identifiers from tracked URLs" }
+                  ]
+              }
+          ]
+        };
+
+        // Dimensions for the mind map
+        const width = 960;
+        const height = 600;
+
+        // Create the SVG container for the mind map
+        const svg = d3.select("#mindmap").append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+        // Create a tree layout
+        const tree = d3.tree()
+          .size([height, width - 160]);
+
+        const root = d3.hierarchy(data);
+
+        tree(root);
+
+        // Create links (lines) between nodes
+        const link = svg.selectAll(".link")
+          .data(root.descendants().slice(1))
+          .enter().append("path")
+          .attr("class", "link")
+          .attr("d", d => `
+              M${d.y},${d.x}
+              C${d.parent.y + 100},${d.x}
+              ${d.parent.y + 100},${d.parent.x}
+              ${d.parent.y},${d.parent.x}
+          `);
+
+        // Create nodes
+        const node = svg.selectAll(".node")
+          .data(root.descendants())
+          .enter().append("g")
+          .attr("class", d => "node" + (d.children ? " node--internal" : " node--leaf"))
+          .attr("transform", d => `translate(${d.y},${d.x})`);
+
+        // Append circles to the nodes
+        node.append("circle")
+          .attr("r", 10);
+
+        // Append labels to the nodes
+        node.append("text")
+          .attr("dy", 3)
+          .attr("x", d => d.children ? -12 : 12)
+          .style("text-anchor", d => d.children ? "end" : "start")
+          .text(d => d.data.name);
+
     </script>
 </body>
 </html>
