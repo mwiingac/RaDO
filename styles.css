@@ -37,9 +37,9 @@ body {
 
 #collection { top: 10%; left: 80%; background-color: #4285f4; }
 #management { top: 25%; left: 80%; background-color: #db4437; }
-#cleaning { top: 40%; left: 80%; background-color: #0f9d58; }
-#sharing { top: 60%; left: 80%; background-color: #f4b400; }
-#analysis { top: 75%; left: 80%; background-color: #4285f4; }
+#cleaning { top: 40%; left: 80%; background-color: #75e1d8; }
+#sharing { top: 60%; left: 80%; background-color: #ee8c29; }
+#analysis { top: 75%; left: 80%; background-color: #d74a83; }
 #reporting { top: 90%; left: 80%; background-color: #db4437; }
 
 svg#line {
