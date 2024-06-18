@@ -21,26 +21,26 @@ body {
     color: white;
     border-radius: 50%;
     text-align: center;
-    transform: translate(-50%, -50%);
+    /*transform: translate(-50%, -50%);*/
 }
 
 #rado { top: 50%; left: 50%; background-color: black; }
 #research { top: 50%; left: 35%; background-color: #66b2b2; }
 #data { top: 50%; left: 65%; background-color: #66b2b2; }
 
-#project-open { top: 15%; left: 20%; background-color: #4285f4; }
-#survey-dev { top: 30%; left: 20%; background-color: #db4437; }
-#survey-prep { top: 45%; left: 20%; background-color: #0f9d58; }
-#survey { top: 55%; left: 20%; background-color: #f4b400; }
-#post-survey { top: 70%; left: 20%; background-color: #4285f4; }
-#project-close { top: 85%; left: 20%; background-color: #db4437; }
+#project-open { top: 10%; left: 20%; background-color: #4285f4; }
+#survey-dev { top: 25%; left: 20%; background-color: #db4437; }
+#survey-prep { top: 40%; left: 20%; background-color: #0f9d58; }
+#survey { top: 60%; left: 20%; background-color: #f4b400; }
+#post-survey { top: 75%; left: 20%; background-color: #4285f4; }
+#project-close { top: 90%; left: 20%; background-color: #db4437; }
 
-#collection { top: 15%; left: 80%; background-color: #4285f4; }
-#management { top: 30%; left: 80%; background-color: #db4437; }
-#cleaning { top: 45%; left: 80%; background-color: #0f9d58; }
-#sharing { top: 55%; left: 80%; background-color: #f4b400; }
-#analysis { top: 70%; left: 80%; background-color: #4285f4; }
-#reporting { top: 85%; left: 80%; background-color: #db4437; }
+#collection { top: 10%; left: 80%; background-color: #4285f4; }
+#management { top: 25%; left: 80%; background-color: #db4437; }
+#cleaning { top: 40%; left: 80%; background-color: #0f9d58; }
+#sharing { top: 60%; left: 80%; background-color: #f4b400; }
+#analysis { top: 75%; left: 80%; background-color: #4285f4; }
+#reporting { top: 90%; left: 80%; background-color: #db4437; }
 
 #line {
     stroke: black;
