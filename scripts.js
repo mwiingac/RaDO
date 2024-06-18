@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 'survey', text: 'Survey',                     x: '25%', y: '63%' },
         { id: 'post-survey', text: 'Post Survey',           x: '25%', y: '76%' },
         { id: 'project-close', text: 'Project Close',       x: '25%', y: '89%' },
-
+        
         { id: 'center-node', text: 'RaDO',         x: '50%', y: '50%' },
         
         { id: 'data-collection', text: 'Collection',        x: '70%', y: '11%' },
