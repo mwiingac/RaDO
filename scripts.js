@@ -3,21 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nodes = [
         
-        { id: 'research-node', text: 'Research',            x: '40%', y: '55%'},
-        { id: 'project-open', text: 'Project Open',         x: '25%', y: '15%' },
-        { id: 'survey-development', text: 'Survey Dev.',    x: '25%', y: '30%' },
-        { id: 'survey-preparation', text: 'Survey Prep.',   x: '25%', y: '45%' },
-        { id: 'survey', text: 'Survey',                     x: '25%', y: '60%' },
-        { id: 'post-survey', text: 'Post Survey',           x: '25%', y: '75%' },
-        { id: 'project-close', text: 'Project Close',       x: '25%', y: '90%' },
-
-        { id: 'data-node', text: 'Data',                    x: '60%', y: '55%' },
-        { id: 'data-collection', text: 'Collection',        x: '70%', y: '15%' },
-        { id: 'data-management', text: 'Management',        x: '70%', y: '30%' },
-        { id: 'data-cleaning', text: 'Clenaing',            x: '70%', y: '45%' },
-        { id: 'data-sharing', text: 'Sharing',              x: '70%', y: '60%' },
-        { id: 'data-analysis', text: 'Analysis',            x: '70%', y: '75%' },
-        { id: 'data-reporting', text: 'Reporting',          x: '70%', y: '90%' }
+        
+        { id: 'project-open', text: 'Project Open',         x: '25%', y: '11%' },
+        { id: 'survey-development', text: 'Survey Dev.',    x: '25%', y: '24%' },
+        { id: 'survey-preparation', text: 'Survey Prep.',   x: '25%', y: '37%' },
+        { id: 'research-node', text: 'Research',            x: '40%', y: '50%'},
+        { id: 'survey', text: 'Survey',                     x: '25%', y: '63%' },
+        { id: 'post-survey', text: 'Post Survey',           x: '25%', y: '76%' },
+        { id: 'project-close', text: 'Project Close',       x: '25%', y: '89%' },
+        
+        { id: 'data-collection', text: 'Collection',        x: '70%', y: '11%' },
+        { id: 'data-management', text: 'Management',        x: '70%', y: '24%' },
+        { id: 'data-cleaning', text: 'Clenaing',            x: '70%', y: '37%' },
+        { id: 'data-node', text: 'Data',                    x: '60%', y: '50%' },
+        { id: 'data-sharing', text: 'Sharing',              x: '70%', y: '63%' },
+        { id: 'data-analysis', text: 'Analysis',            x: '70%', y: '76%' },
+        { id: 'data-reporting', text: 'Reporting',          x: '70%', y: '89%' }
 
         /*
         { id: 'po-establish-norms', text: 'Establish working norms', x: '30%', y: '70%' },
