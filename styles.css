@@ -21,7 +21,7 @@ body {
     color: white;
     border-radius: 50%;
     text-align: center;
-    transform: translate(-50%, -50%);
+    /*transform: translate(-50%, -50%);*/
 }
 
 #rado { top: 50%; left: 50%; background-color: black; }
