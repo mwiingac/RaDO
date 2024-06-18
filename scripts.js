@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
         line.classList.add('line');
         lines.appendChild(line);
     }
-
+    
     // Connect RaDO to Research and Data
     connectNodes('rado', 'research');
     connectNodes('rado', 'data');

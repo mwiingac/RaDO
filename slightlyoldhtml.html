@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research and Data Orientation</title>
     <style>
         /* Style for the mind map */
@@ -42,7 +43,7 @@
                   children: [
                       {
                           name: "Project Open",
-                          children: [
+                          /*children: [
                               { name: "Establish working norms" },
                               { name: "Document research design" },
                               { name: "Budget and staffing" },
@@ -56,11 +57,11 @@
                               { name: "Update Salesforce records" },
                               { name: "Save all files on Box" },
                               { name: "Save all PII files in Cryptomator Vaults" }
-                          ]
+                          ]*/
                       },
                       {
                           name: "Survey Development",
-                          children: [
+                          /*children: [
                               { name: "Maintain IRB approval" },
                               { name: "Create data security plan" },
                               { name: "Set up encryption before launch" },
@@ -77,11 +78,11 @@
                               { name: "Update Salesforce records" },
                               { name: "Save all files on Box" },
                               { name: "Save all PII files in Cryptomator Vaults" }
-                          ]
+                          ]*/
                       },
                       {
                           name: "Survey Preparation",
-                          children: [
+                          /*children: [
                               { name: "Set up encryption before launch" },
                               { name: "Train field managers" },
                               { name: "Create field protocols and survey manuals" },
@@ -102,12 +103,12 @@
                               { name: "Create data security plan" },
                               { name: "Save all files on Box" },
                               { name: "Save all PII files in Cryptomator Vaults" }
-                          ]
+                          ]*/
                     },
                     
                     {
                           name: "Survey",
-                          children: [
+                          /*children: [
                               { name: "Implement soft launch" },
                               { name: "Accompaniments" },
                               { name: "Spot-checks" },
@@ -122,11 +123,11 @@
                               { name: "Maintain data security plan" },
                               { name: "Save all files on Box" },
                               { name: "Save all PII files in Cryptomator Vaults" }
-                          ]
+                          ]*/
                   },
                   {
                           name: "Post Survey",
-                          children: [
+                          /*children: [
                               { name: "Clean data and run final checks" },
                               { name: "Back up data to 2 locations" },
                               { name: "Downgrade SurveyCTO server" },
@@ -142,11 +143,11 @@
                               { name: "Maintain data security plan" },
                               { name: "Save all files on Box" },
                               { name: "Save all PII files in Cryptomator Vaults" }
-                          ]
+                          ]*/
                   },
                       {
                         name: "Project Close",
-                        children: [
+                        /*children: [
                               { name: "Use new UID in de-identified data" },
                               { name: "Close SurveycTO server" },
                               { name: "Create plan for handing over or analyzing data" },
@@ -161,7 +162,7 @@
                               { name: "Update Salesforce records" },
                               { name: "Retire project with all IRBs" },
                               { name: "Close grants and replicon access" }
-                          ]
+                          ]*/
                       }
                   ]
               },
@@ -177,10 +178,11 @@
               }
           ]
         };
-
+        
+        
         // Dimensions for the mind map
-        const width = 1480;
-        const height = 2500;
+        var width = 1000;
+        var height = 1200;
 
         // Create the SVG container for the mind map
         const svg = d3.select("#mindmap").append("svg")
