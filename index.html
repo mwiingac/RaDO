@@ -52,24 +52,8 @@
 </head>
 <body>
     <div class="mindmap">
-        <svg width="800" height="600">
-            <!-- Research Lines -->
-            <path class="line" d="M400,300 Q300,200 200,100" />
-            <path class="line" d="M400,300 Q300,220 200,140" />
-            <path class="line" d="M400,300 Q300,240 200,180" />
-            <path class="line" d="M400,300 Q300,260 200,220" />
-            <path class="line" d="M400,300 Q300,280 200,260" />
-            <path class="line" d="M400,300 Q300,300 200,300" />
-            
-            <!-- Data Lines -->
-            <path class="line" d="M400,300 Q500,200 600,100" />
-            <path class="line" d="M400,300 Q500,220 600,140" />
-            <path class="line" d="M400,300 Q500,240 600,180" />
-            <path class="line" d="M400,300 Q500,260 600,220" />
-            <path class="line" d="M400,300 Q500,280 600,260" />
-            <path class="line" d="M400,300 Q500,300 600,300" />
-        </svg>
-        
+        <svg id="svg" width="800" height="600"></svg>
+
         <!-- Central Nodes -->
         <div class="node research" style="left: 380px; top: 280px;"></div>
         <div class="label" style="left: 400px; top: 320px;">Research</div>
@@ -104,8 +88,44 @@
         <div class="node reporting" style="left: 600px; top: 280px;"></div>
         <div class="label" style="left: 600px; top: 260px;">Reporting</div>
     </div>
+
+    <script>
+        const svg = document.getElementById('svg');
+        const nodes = [
+            { x: 380, y: 280 }, // Research
+            { x: 420, y: 280 }, // Data
+            { x: 180, y: 80 },  // Project Open
+            { x: 180, y: 120 }, // Survey Dev.
+            { x: 180, y: 160 }, // Survey Prep.
+            { x: 180, y: 200 }, // Survey
+            { x: 180, y: 240 }, // Post Survey
+            { x: 180, y: 280 }, // Project Close
+            { x: 600, y: 80 },  // Collection
+            { x: 600, y: 120 }, // Management
+            { x: 600, y: 160 }, // Cleaning
+            { x: 600, y: 200 }, // Sharing
+            { x: 600, y: 240 }, // Analysis
+            { x: 600, y: 280 }  // Reporting
+        ];
+
+        function createLine(x1, y1, x2, y2) {
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            const curveX = (x1 + x2) / 2;
+            const curveY = (y1 + y2) / 2 - 100;
+            path.setAttribute('d', `M${x1},${y1} Q${curveX},${curveY} ${x2},${y2}`);
+            path.setAttribute('class', 'line');
+            svg.appendChild(path);
+        }
+
+        // Research to nodes
+        nodes.slice(2, 8).forEach(node => createLine(nodes[0].x, nodes[0].y, node.x, node.y));
+        
+        // Data to nodes
+        nodes.slice(8, 14).forEach(node => createLine(nodes[1].x, nodes[1].y, node.x, node.y));
+    </script>
 </body>
 </html>
+
 
 
 
