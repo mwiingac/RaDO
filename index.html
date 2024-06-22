@@ -1,3 +1,4 @@
+<!-- For the code below, ensure that, when I hover over a line connecting two nodes, those nodes also turn limegreen: -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +13,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #E4E1DA;
         }
         .mindmap {
             position: relative;
@@ -26,107 +28,155 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-size: 10px;
+            transition: background-color 1s;
+            transition: 1s;
         }
-        .research { background-color: teal; }
-        .data { background-color: lightseagreen; }
-        .project-open, .collection { background-color: dodgerblue; }
-        .survey-dev, .management { background-color: indianred; }
-        .survey-prep, .cleaning { background-color: mediumseagreen; }
-        .survey, .sharing { background-color: gold; }
-        .post-survey, .analysis { background-color: dodgerblue; }
-        .project-close, .reporting { background-color: indianred; }
+        
+        .node:hover {
+            background-color: limegreen;
+            color: limegreen;
+        }
+        
+        .research { background-color: gray; }
+        .data { background-color: gray; }
+        .project-open, .collection { background-color: rgb(118, 122, 122); }
+        .survey-dev, .management { background-color: rgb(118, 122, 122); }
+        .survey-prep, .cleaning { background-color: rgb(118, 122, 122); }
+        .survey, .sharing { background-color: rgb(118, 122, 122); }
+        .post-survey, .analysis { background-color: rgb(118, 122, 122); }
+        .project-close, .reporting { background-color: rgb(118, 122, 122); }
         .label {
             position: absolute;
             white-space: nowrap;
             transform: translate(-50%, -50%);
+            /*height: 20px;
+            width: 100px;
+            background-color: limegreen;
+            border-radius: 10%;*/
         }
         .line {
             position: absolute;
             stroke: gray;
-            stroke-width: 1;
+            stroke-width: 2;
             fill: none;
-            transition: stroke 0.3s;
+            transition: stroke 1s;
         }
         .line:hover {
             stroke: limegreen;
-            stroke-width: 2;
+            stroke-width: 4;
         }
+        .rado {
+            position: absolute;
+            stroke: gray; 
+            stroke-width: 2;
+            left: 50%;
+            top: 48%;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            border: solid gray 1px;
+            text-align: center;
+            vertical-align: middle;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid limegreen 1px;
+            background-color: limegreen;
+            transition: 1.5s;
+            color: white;
+        }
+        
     </style>
 </head>
 <body>
     <div class="mindmap">
+
         <svg id="svg" width="800" height="600"></svg>
 
         <!-- Central Nodes -->
-        <div class="node research" style="left: 380px; top: 280px;"></div>
-        <div class="label" style="left: 400px; top: 320px;">Research</div>
-        <div class="node data" style="left: 420px; top: 280px;"></div>
-        <div class="label" style="left: 440px; top: 320px;">Data</div>
+        <div class="rado">RaDO</div>
+    
+
+        <div class="node research" id="node-research" style="left: 250px; top: 50%;"><div class="label" style="left: 60px; top: 10px;">Research</div></div>
+
+        <div class="node data" id="node-data" style="left: 590px; top: 50%;"><div class="label" style="left: -40px; top: 10px;">Data</div></div>
+        
 
         <!-- Research Nodes -->
-        <div class="node project-open" style="left: 180px; top: 80px;"></div>
-        <div class="label" style="left: 180px; top: 60px;">Project Open</div>
-        <div class="node survey-dev" style="left: 180px; top: 120px;"></div>
-        <div class="label" style="left: 180px; top: 100px;">Survey Dev.</div>
-        <div class="node survey-prep" style="left: 180px; top: 160px;"></div>
-        <div class="label" style="left: 180px; top: 140px;">Survey Prep.</div>
-        <div class="node survey" style="left: 180px; top: 200px;"></div>
-        <div class="label" style="left: 180px; top: 180px;">Survey</div>
-        <div class="node post-survey" style="left: 180px; top: 240px;"></div>
-        <div class="label" style="left: 180px; top: 220px;">Post Survey</div>
-        <div class="node project-close" style="left: 180px; top: 280px;"></div>
-        <div class="label" style="left: 180px; top: 260px;">Project Close</div>
+        <div class="node project-open" id="node-project-open" style="left: 85px; top: 115px;"><div class="label" style="left: -50px; top: 7.5px;">Project Open</div></div>
+        
+        <div class="node survey-dev" id="node-survey-dev" style="left: 85px; top: 190px;"><div class="label" style="left: -50px; top: 7.5;">Survey Dev.</div></div>
+        
+        <div class="node survey-prep" id="node-survey-prep" style="left: 85px; top: 265px;"><div class="label" style="left: -50px; top: 7.5px;">Survey Prep.</div></div>
+        
+        <div class="node survey" id="node-survey" style="left: 85px; top: 340px;"><div class="label" style="left: -50px; top: 7.5px;">Survey</div></div>
+        
+        <div class="node post-survey" id="node-post-survey" style="left: 85px; top: 415px;"><div class="label" style="left: -50px; top: 7.5px;">Post Survey</div></div>
+        
+        <div class="node project-close" id="node-project-close" style="left: 85px; top: 490px;"><div class="label" style="left: -50px; top: 7.5px;">Project Close</div></div>
+        
 
         <!-- Data Nodes -->
-        <div class="node collection" style="left: 600px; top: 80px;"></div>
-        <div class="label" style="left: 600px; top: 60px;">Collection</div>
-        <div class="node management" style="left: 600px; top: 120px;"></div>
-        <div class="label" style="left: 600px; top: 100px;">Management</div>
-        <div class="node cleaning" style="left: 600px; top: 160px;"></div>
-        <div class="label" style="left: 600px; top: 140px;">Cleaning</div>
-        <div class="node sharing" style="left: 600px; top: 200px;"></div>
-        <div class="label" style="left: 600px; top: 180px;">Sharing</div>
-        <div class="node analysis" style="left: 600px; top: 240px;"></div>
-        <div class="label" style="left: 600px; top: 220px;">Analysis</div>
-        <div class="node reporting" style="left: 600px; top: 280px;"></div>
-        <div class="label" style="left: 600px; top: 260px;">Reporting</div>
+        <div class="node collection" id="node-collection" style="left: 800px; top: 115px;"><div class="label" style="left: 65px; top: 7.5px;">Collection</div></div>
+        
+        <div class="node management" id="node-management" style="left: 800px; top: 190px;"><div class="label" style="left: 65px; top: 7.5px;">Management</div></div>
+        
+        <div class="node cleaning" id="node-cleaning" style="left: 800px; top: 265px;"><div class="label" style="left: 65px; top: 7.5px;">Cleaning</div></div>
+        
+        <div class="node sharing" id="node-sharing" style="left: 800px; top: 340px;"><div class="label" style="left: 65px; top: 7.5px;">Sharing</div></div>
+        
+        <div class="node analysis" id="node-analysis" style="left: 800px; top: 415px;"><div class="label" style="left: 65px; top: 7.5px;">Analysis</div></div>
+        
+        <div class="node reporting" id="node-reporting" style="left: 800px; top: 490px;"><div class="label" style="left: 65px; top: 7.5px;">Reporting</div></div>
+        
     </div>
 
     <script>
         const svg = document.getElementById('svg');
+
         const nodes = [
-            { x: 380, y: 280 }, // Research
-            { x: 420, y: 280 }, // Data
-            { x: 180, y: 80 },  // Project Open
-            { x: 180, y: 120 }, // Survey Dev.
-            { x: 180, y: 160 }, // Survey Prep.
-            { x: 180, y: 200 }, // Survey
-            { x: 180, y: 240 }, // Post Survey
-            { x: 180, y: 280 }, // Project Close
-            { x: 600, y: 80 },  // Collection
-            { x: 600, y: 120 }, // Management
-            { x: 600, y: 160 }, // Cleaning
-            { x: 600, y: 200 }, // Sharing
-            { x: 600, y: 240 }, // Analysis
-            { x: 600, y: 280 }  // Reporting
+            { id: 'node-research', x: 260, y: 310 }, // Research
+            { id: 'node-data', x: 600, y: 310 }, // Data
+            { id: 'node-project-open', x: 100, y: 125 },  // Project Open
+            { id: 'node-survey-dev', x: 100, y: 200 }, // Survey Dev.
+            { id: 'node-survey-prep', x: 100, y: 275 }, // Survey Prep.
+            { id: 'node-survey', x: 100, y: 350 }, // Survey
+            { id: 'node-post-survey', x: 100, y: 425 }, // Post Survey
+            { id: 'node-project-close', x: 100, y: 500 }, // Project Close
+            { id: 'node-collection', x: 800, y: 125 },  // Collection
+            { id: 'node-management', x: 800, y: 200 }, // Management
+            { id: 'node-cleaning', x: 800, y: 275 }, // Cleaning
+            { id: 'node-sharing', x: 800, y: 350 }, // Sharing
+            { id: 'node-analysis', x: 800, y: 425 }, // Analysis
+            { id: 'node-reporting', x: 800, y: 500 }  // Reporting
         ];
 
-        function createLine(x1, y1, x2, y2) {
+        
+        function createLine(x1, y1, x2, y2, nodeId1, nodeId2) {
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             const curveX = (x1 + x2) / 2;
-            const curveY = (y1 + y2) / 2 - 100;
+            const curveY = (y1 + y2) / 1.5 - 100;
             path.setAttribute('d', `M${x1},${y1} Q${curveX},${curveY} ${x2},${y2}`);
             path.setAttribute('class', 'line');
+            path.addEventListener('mouseover', () => {
+                document.getElementById(nodeId1).style.backgroundColor = 'limegreen';
+                document.getElementById(nodeId2).style.backgroundColor = 'limegreen';
+            });
+            path.addEventListener('mouseout', () => {
+                document.getElementById(nodeId1).style.backgroundColor = '';
+                document.getElementById(nodeId2).style.backgroundColor = '';
+            });
             svg.appendChild(path);
         }
 
+
         // Research to nodes
-        nodes.slice(2, 8).forEach(node => createLine(nodes[0].x, nodes[0].y, node.x, node.y));
+        nodes.slice(2, 8).forEach(node => createLine(nodes[0].x, nodes[0].y, node.x, node.y, nodes[0].id, node.id));
         
         // Data to nodes
-        nodes.slice(8, 14).forEach(node => createLine(nodes[1].x, nodes[1].y, node.x, node.y));
+        nodes.slice(8, 14).forEach(node => createLine(nodes[1].x, nodes[1].y, node.x, node.y, nodes[1].id, node.id));
+
+
     </script>
 </body>
 </html>
