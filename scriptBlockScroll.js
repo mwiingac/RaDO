@@ -1,5 +1,5 @@
 let currentPage = 1;
-const totalPages = 7;
+const totalPages = 6;
 let isThrottled = false;
 
 function throttleScroll(func, limit = 1000) {

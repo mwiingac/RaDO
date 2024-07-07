@@ -61,10 +61,22 @@ body {
 		position: absolute;
 		height: 100vh;
 		top: 600vh;
+		background-color: #ffffff;
 	}
 	
 	
-  
+	.crimage {
+		position: absolute;
+		z-index: 45;
+		top: 37vh;
+		left: 46vw;
+		height: 150px;
+		width: 150px;
+		border-radius: 100%;
+		overflow: hidden;
+
+	}
+
 	.cursor {
     	
 		pointer-events: none;
@@ -140,6 +152,28 @@ body {
 	
 
 	.mindmapResearch:hover .researchLiner {
+		border-left: 2.5px solid #765E52;
+		z-index: 4;
+	}
+
+
+
+	.researchLinerP7 {
+
+		position: absolute;
+		top: 0vh;
+		right: -0.1vw;
+		width: 0vw;
+		height: 50vh;
+		border-left: 2.5px solid #765E52;
+		transition: 0.7s ease-in-out;
+		z-index: 1;
+
+	}
+
+	
+
+	.mindmapResearch:hover .researchLinerP7 {
 		border-left: 2.5px solid #765E52;
 		z-index: 4;
 	}
