@@ -1,229 +1,833 @@
-<!-- For the code below, ensure that, when I hover over a line connecting two nodes, those nodes also turn limegreen: -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mind Map</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #E4E1DA;
-        }
-        .mindmap {
-            position: relative;
-            width: 800px;
-            height: 600px;
-        }
-        .node {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 1s;
-            transition: 1s;
-        }
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Research and Data</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    	<script src="https://unpkg.com/lenis@1.1.3/dist/lenis.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <!--script src="smoothscroll.js"></script-->
+        <script src="scriptBlockScroll.js"></script>
         
-        .node:hover {
-            background-color: limegreen;
-            color: limegreen;
-        }
-        
-        .research { background-color: gray; }
-        .data { background-color: gray; }
-        .project-open, .collection { background-color: rgb(118, 122, 122); }
-        .survey-dev, .management { background-color: rgb(118, 122, 122); }
-        .survey-prep, .cleaning { background-color: rgb(118, 122, 122); }
-        .survey, .sharing { background-color: rgb(118, 122, 122); }
-        .post-survey, .analysis { background-color: rgb(118, 122, 122); }
-        .project-close, .reporting { background-color: rgb(118, 122, 122); }
-        .label {
-            position: absolute;
-            white-space: nowrap;
-            transform: translate(-50%, -50%);
-            /*height: 20px;
-            width: 100px;
-            background-color: limegreen;
-            border-radius: 10%;*/
-        }
-        .line {
-            position: absolute;
-            stroke: gray;
-            stroke-width: 2;
-            fill: none;
-            transition: stroke 1s;
-        }
-        .line:hover {
-            stroke: limegreen;
-            stroke-width: 4;
-        }
-        .rado {
-            position: absolute;
-            stroke: gray; 
-            stroke-width: 2;
-            left: 50%;
-            top: 48%;
-            width: 50px;
-            height: 50px;
-            border-radius: 100%;
-            border: solid gray 1px;
-            text-align: center;
-            vertical-align: middle;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: solid limegreen 1px;
-            background-color: limegreen;
-            transition: 1.5s;
-            color: white;
-        }
-        
-    </style>
+        <script src="https://rawgit.com/shaneapen/Image-Preview-for-Links/master/image_preview_for_links.js"></script>
 </head>
+
 <body>
-    <div class="mindmap">
 
-        <svg id="svg" width="800" height="600"></svg>
-
-        <!-- Central Nodes -->
-        <div class="rado">RaDO</div>
-    
-
-        <div class="node research" id="node-research" style="left: 250px; top: 50%;"><div class="label" style="left: 60px; top: 10px;">Research</div></div>
-
-        <div class="node data" id="node-data" style="left: 590px; top: 50%;"><div class="label" style="left: -40px; top: 10px;">Data</div></div>
         
 
-        <!-- Research Nodes -->
-        <div class="node project-open" id="node-project-open" style="left: 85px; top: 115px;"><div class="label" style="left: -50px; top: 7.5px;">Project Open</div></div>
+    <div class="cursor">
+        <div class="cursor__ball cursor__ball--big">
+          <svg height="30" width="30">
+                <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
+          </svg>
+      </div>
         
-        <div class="node survey-dev" id="node-survey-dev" style="left: 85px; top: 190px;"><div class="label" style="left: -50px; top: 7.5;">Survey Dev.</div></div>
-        
-        <div class="node survey-prep" id="node-survey-prep" style="left: 85px; top: 265px;"><div class="label" style="left: -50px; top: 7.5px;">Survey Prep.</div></div>
-        
-        <div class="node survey" id="node-survey" style="left: 85px; top: 340px;"><div class="label" style="left: -50px; top: 7.5px;">Survey</div></div>
-        
-        <div class="node post-survey" id="node-post-survey" style="left: 85px; top: 415px;"><div class="label" style="left: -50px; top: 7.5px;">Post Survey</div></div>
-        
-        <div class="node project-close" id="node-project-close" style="left: 85px; top: 490px;"><div class="label" style="left: -50px; top: 7.5px;">Project Close</div></div>
-        
+        <div class="cursor__ball cursor__ball--small">
+            <svg height="10" width="10">
+                <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+          </svg>
+        </div>
+  </div>
 
-        <!-- Data Nodes -->
-        <div class="node collection" id="node-collection" style="left: 800px; top: 115px;"><div class="label" style="left: 65px; top: 7.5px;">Collection</div></div>
+    <div class="page" id="page1">
+
         
-        <div class="node management" id="node-management" style="left: 800px; top: 190px;"><div class="label" style="left: 65px; top: 7.5px;">Management</div></div>
+        <div class="mindmapResearch">
+
+            <div class="researchLiner"></div>
+
+            <div class="node research" id="node-research">
+                <div class="label" style="left: 2px; top: 5px; color: #fff;">Research</div>
+            </div>
+            <div class="node project-open" id="node-project-open">
+                <div class="label">P<br>r<br>o<br>j<br>e<br>c<br>t<br><br>O<br>p<br>e<br>n</div>
+            </div>
+            <!--img class="projectopenimage" src="projectopen.png" alt="Italian Trulli" style="height: 200px;"></img-->
+            
+            <div class="nodeUnderResearch" id="nodeUnderResearch">
+            </div>
+            <div class="detailResearch">
+                <!--div class="detailResearchIn"-->
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/How-to-Guide-AEA-RCT-Registry">
+                            Register Project with AEA [MMD]
+                        
+                        <div class="sideshowR">
+                            - Research transparency crucial <br>
+                            - Work with the PI/s
+                        </div>
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/IPA-Internal-Communications">
+                            Establish Working Norms
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/research-methods-initiative">
+                            Document Research Design
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/Budget-Guidelines-for-Preparing-Proposals">
+                            Budget and Staffing
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/Global-Procurement-Policy-and-Procedures">
+                            Equipment Procurement
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/dts-sow">
+                            Plan for Communication with Partners
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/Cost-Effectiveness-Analysis">
+                            Plan for Cost-Effectiveness Analysis
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/Survey-Planning">
+                            Create Survey Plan Before Launch [MMD]
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <a href="https://poverty-action.my.site.com/support/s/article/SurveyCTO-FAQ">
+                            Open SurveyCTO Server
+                        </a>
+                    </div>
+                    <div class="linkR">
+                        <div class="nolink">
+                            Save all files on Box [MMD]
+                        </div>
+                    </div>
+                    <div class="linkR">
+                        <div class="nolink">
+                            Save all PII data in a vault [MMD]
+                        </div>
+                    </div>
+
+                <!--/div-->
+
+                
+            </div>
+        </div>
+        <div class="mindmapData">
+
+            <div class="dataLiner"></div>
+
+            <div class="node data" id="node-data">
+                <div class="label" style="left: 8px; top: 5px; color: #fff;">Data</div>
+            </div>
+            <div class="node collection" id="node-collection">
+                <div class="label">
+                    C<br>o<br>l<br>l<br>e<br>c<br>t<br>i<br>o<br>n
+                </div>
+            </div>
+            <div class="nodeUnderData" id="nodeUnderData"></div>
+                <div class="detailData">
+                    <div class="link">
+                        <a href="https://www.surveycto.com/">
+                            SurveyCTO
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="https://www.qualtrics.com/">
+                            Qualtrics
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="https://poverty-action.my.site.com/support/s/article/Automated-surveys-using-WhatsApp-A-learning-guide-for-IPA-employees">
+                            Twilio
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="https://getodk.org/">
+                            ODK
+                        </a>
+                    </div>
+                    <div class="link">
+                        <a href="https://www.google.com/forms/about/">
+                            Google Forms
+                        </a>
+                    </div>
+                    <div class="link">
+                        <div class="nolink">
+                            Other
+                        </div>
+                    </div>
+                    
+                </div>
+            
+        </div>
+            
+    </div>
+
+    <div class="page" id="page2">
+
         
-        <div class="node cleaning" id="node-cleaning" style="left: 800px; top: 265px;"><div class="label" style="left: 65px; top: 7.5px;">Cleaning</div></div>
+        <div class="mindmapResearch">
+            <div class="researchLiner"></div>
+            <div class="node survey-dev" id="node-survey-dev">
+                <div class="label">S<br>u<br>r<br>v<br>e<br>y<br><br>D<br>e<br>v<br>e<br>l<br>o<br>p<br>m<br>e<br>n<br>t</div>
+            </div>
+            <div class="nodeUnderResearch" id="nodeUnderResearch"></div>
+            <div class="detailResearch">
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IPA-Protocol-Data-and-Device-Security">
+                        Data security plan and encryption [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/SurveyCTO-Best-Practices">
+                        Finalize questionnaire
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/SurveyCTO-Best-Practices">
+                        Program Survey
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/back-check-manual#_Toc437959937">
+                        Program back-check survey
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/survey-translation">
+                        Translate survey into local language
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Bench-Testing">
+                        Bench test survey [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Survey-and-Respondent-Tracking">
+                        Trakcing system and replacement protocol
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/back-check-manual#_Toc437959939">
+                        Set up back check randomization
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/SurveyCTO-Encryption">
+                        Encrtypt SurveyCTO forms
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IRB-Project-Life-Cycle">
+                        Maintain IRB Approval[MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all files on Box [MMD]
+                    </div>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all PII data in a vault[MMD]
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="mindmapData">
+            <div class="dataLiner"></div>
+            <div class="node management" id="node-management">
+                <div class="label" >Q<br>u<br>a<br>l<br>i<br>t<br>y<br><br>C<br>o<br>n<br>t<br>r<br>o<br>l</div>
+            </div>
+            <div class="nodeUnderData" id="nodeUnderData"></div>
+            <div class="detailData">
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/ipa-dms">
+                        Data Management System [MMD]
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/hfcs-manual">
+                        High Frequency Checks [MMD]
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/surveycto-audio-audits">
+                        Audio Audits
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Quality-Control#accompanying">
+                        Accompaniments
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Quality-Control#spotchecks">
+                        Spot-checks
+                    </a>
+                </div>
+                
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/back-check-manual#_Toc437959940">
+                        Back-checks analysis
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Survey-Planning">
+                        Compensation of respondents
+                    </a>
+                </div>
+                <div class="link">
+                    <div class="nolink">
+                        Cryptomator encryption [MMD]
+                    </div>
+                </div>
+                <div class="link">
+                    <div class="nolink">
+                        Save all files on Box [MMD]
+                    </div>
+                </div>
+                <div class="link">
+                    <div class="nolink">
+                        Save all PII data in a vault [MMD]
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page3">
+
         
-        <div class="node sharing" id="node-sharing" style="left: 800px; top: 340px;"><div class="label" style="left: 65px; top: 7.5px;">Sharing</div></div>
-        
-        <div class="node analysis" id="node-analysis" style="left: 800px; top: 415px;"><div class="label" style="left: 65px; top: 7.5px;">Analysis</div></div>
-        
-        <div class="node reporting" id="node-reporting" style="left: 800px; top: 490px;"><div class="label" style="left: 65px; top: 7.5px;">Reporting</div></div>
+        <div class="mindmapResearch">
+            <div class="researchLiner"></div>
+            <div class="node survey-prep" id="node-survey-prep">
+                <div class="label">S<br>u<br>r<br>v<br>e<br>y<br><br>P<br>r<br>e<br>p<br>a<br>r<br>a<br>t<br>i<br>o<br>n</div>
+            </div>
+            <div class="nodeUnderResearch" id="nodeUnderResearch"></div>
+            <div class="detailResearch">
+                <div class="linkR">
+                    <a href="https://ipastorage.app.box.com/file/11388146234">
+                        Data security plan and encryption [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Train field managers
+                    </div>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/enumerator-training">
+                        Create field protocols and Survey Manual
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IPA-Protocol-Data-and-Device-Security#Module4">
+                        Plan for storing and securing devices
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IPA-Global-Staff-Safety-Security-Policy">
+                        Create safety and security plan
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Quality-Control">
+                        Data and quality assurance plan [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/enumerator-training">
+                        Create training materials
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IPA-Protocol-Data-and-Device-Security#Module4">
+                        Set up and encrypt devices
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Field-Management-Survey-Prep">
+                        Train and hire field officers
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Survey-pilot">
+                        Pilot Survey [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Create reporting system to PIs
+                    </div>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Soft-survey-launch">
+                        Feedback mechanism with field manager
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/False-survey-launch">
+                        Implement False launch
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IRB-Project-Life-Cycle">
+                        Maintain IRB Approval[MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all files on Box [MMD]
+                    </div>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all PII data in a vault[MMD]
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="mindmapData">
+            <div class="dataLiner"></div>
+            <div class="node cleaning" id="node-cleaning">
+                <div class="label" >C<br>l<br>e<br>a<br>n<br>i<br>n<br>g</div>
+            </div>
+            <div class="nodeUnderData" id="nodeUnderData"></div>
+            <div class="detailData">
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Guide-for-Data-Publication-Preparation">
+                        Data cleaning in general
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://povertyaction.github.io/guides/cleaning/readme/">
+                        Raw Data Management
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://povertyaction.github.io/guides/cleaning/readme/">
+                        Variable Management
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://povertyaction.github.io/guides/cleaning/readme/">
+                        Dataset documentation
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://povertyaction.github.io/guides/cleaning/readme/">
+                        Data Aggregation
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://povertyaction.github.io/guides/cleaning/readme/">
+                        Outcome creation
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://povertyaction.github.io/guides/cleaning/readme/">
+                        Coding in Stata
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IPA-Protocol-Data-and-Device-Security">
+                        Backing up
+                    </a>
+                </div>
+                <div class="link">
+                    <div class="nolink">
+                        Save all files on Box
+                    </div>
+                </div>
+                <div class="link">
+                    <div class="nolink">
+                        Save all PII data in a vault
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page4">
+        <div class="mindmapResearch">
+            <div class="researchLiner"></div>
+            <div class="node survey" id="node-survey">
+                <div class="label">S<br>u<br>r<br>v<br>e<br>y</div>
+            </div>
+            <div class="nodeUnderResearch" id="nodeUnderResearch"></div>
+            <div class="detailResearch">
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Soft-survey-launch">
+                        Implement a Soft Launch
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Quality-Control#accompanying">
+                        Accompany and/spot check surveyors [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Quality-Control#auditing_backchecks">
+                        Implement and act on back checks [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Quality-Control#hfcs">
+                        Implement and act on HFCs [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IPA-Protocol-Data-and-Device-Security">
+                        Back up data in at least two locations [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Provide field team feedback based on data
+                    </div>
+                </div>
+                
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IRB-Project-Life-Cycle">
+                        Maintain IRB Approval[MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all files on Box [MMD]
+                    </div>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all PII data in a vault[MMD]
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mindmapData">
+            <div class="dataLiner"></div>
+            <div class="node analysis" id="node-analysis">
+                <div class="label">A<br>n<br>a<br>l<br>y<br>s<br>i<br>s</div>
+            </div>
+            <div class="nodeUnderData" id="nodeUnderData"></div>
+            <div class="detailData">
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Analysis resources
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Treatment effects
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Heterogeneity analysis
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Multiple hypothesis testing
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Threats
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Standard errors
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Randomization inference
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Miscellaneous
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://www.povertyactionlab.org/resource/data-analysis">
+                        Exporting results
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page5">
+        <div class="mindmapResearch">
+            <div class="researchLiner"></div>
+            <div class="node post-survey" id="node-post-survey">
+                <div class="label">P<br>o<br>s<br>t<br><br>S<br>u<br>r<br>v<br>e<br>y</div>
+            </div>
+            <div class="nodeUnderResearch" id="nodeUnderResearch"></div>
+            <div class="detailResearch">
+                <div class="linkR">
+                    <div class="nolink">
+                        Clean data and run final verification checks
+                    </div>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Back up data in at least two locations [MMD]
+                    </div>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Downgrade SurveyCTO server
+                    </div>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IRB-Project-Life-Cycle">
+                        Wipe/store hardware
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Check vault access on Safelforce
+                    </div>
+                </div>
+                
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Standard-Research-Protocols">
+                        Complete readme / project log
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IPA-Publication-Guidelines">
+                        Share results with the partner
+                    </a>
+                </div>
+               
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist#documentation">
+                        Evaluate field protocols; lessons learned
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/How-to-Get-a-project-summary-on-the-website">
+                        Publish or update website project summary
+                    </a>
+                </div>
+                
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/IRB-Project-Life-Cycle">
+                        Maintain IRB Approval [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all files on Box [MMD]
+                    </div>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all PII data in a vault [MMD]
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <div class="mindmapData">
+            <div class="dataLiner"></div>
+            <div class="node reporting" id="node-reporting">
+                <div class="label" >R<br>e<br>p<br>o<br>r<br>t<br>i<br>n<br>g</div>
+            </div>
+            <div class="nodeUnderData" id="nodeUnderData"></div>
+            <div class="detailData">
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Report-Writing">
+                        A paragraph summary
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Report-Writing">
+                        Survey progress
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Report-Writing">
+                        Tracking and Replacement Rates
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Report-Writing">
+                        Threats to Data Quality
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Report-Writing">
+                        Summary Statistics
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Report-Writing">
+                        Back check Analysis
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Report-Writing">
+                        Writing Style
+                    </a>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page6">
+        <div class="mindmapResearch">
+            <div class="researchLiner"></div>
+            <div class="node project-close" id="node-project-close">
+                <div class="label" >P<br>r<br>o<br>j<br>e<br>c<br>t<br><br>C<br>l<br>o<br>s<br>e</div>
+            </div>
+            <div class="nodeUnderResearch" id="nodeUnderResearch"></div>
+            <div class="detailResearch">
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Use new UID in de-identified dataset [mmd]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Close SurveyCTO server
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Plan for handing over or analysing the data
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Share final results with the partner
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Calculate final cost-effectiveness analysis
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Finalize readme / project log
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Write final report
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Set up plan for data destruction / retention
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Wipe / store hardware of all data
+                    </a>
+                </div>
+                <div class="linkR">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Project-close-out-checklist">
+                        Retire your project with all IRBs [MMD]
+                    </a>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all files on Box
+                    </div>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Save all PII data in a vault
+                    </div>
+                </div>
+                <div class="linkR">
+                    <div class="nolink">
+                        Close grants and Replicon access
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mindmapData">
+            <div class="dataLiner"></div>
+            <div class="node sharing" id="node-sharing">
+                <div class="label" >S<br>h<br>a<br>r<br>i<br>n<br>g</div>
+            </div>
+            <div class="nodeUnderData" id="nodeUnderData"></div>
+            <div class="detailData">
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Guide-for-Data-Publication-Preparation">
+                        Preparing Data and Code for Public Sharing
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Guide-for-Data-Publication-Preparation">
+                        Initial Organization of Materials
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Guide-for-Data-Publication-Preparation">
+                        Preparation and Cleaning
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Guide-for-Data-Publication-Preparation">
+                        Finalizing Materials, Documentation and Communication
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="https://poverty-action.my.site.com/support/s/article/Guide-for-Data-Publication-Preparation">
+                        Sharing Materials
+                    </a>
+                </div>
+                
+            </div>
+        </div>
         
     </div>
 
-    <script>
-        const svg = document.getElementById('svg');
-
-        const nodes = [
-            { id: 'node-research', x: 260, y: 310 }, // Research
-            { id: 'node-data', x: 600, y: 310 }, // Data
-            { id: 'node-project-open', x: 100, y: 125 },  // Project Open
-            { id: 'node-survey-dev', x: 100, y: 200 }, // Survey Dev.
-            { id: 'node-survey-prep', x: 100, y: 275 }, // Survey Prep.
-            { id: 'node-survey', x: 100, y: 350 }, // Survey
-            { id: 'node-post-survey', x: 100, y: 425 }, // Post Survey
-            { id: 'node-project-close', x: 100, y: 500 }, // Project Close
-            { id: 'node-collection', x: 800, y: 125 },  // Collection
-            { id: 'node-management', x: 800, y: 200 }, // Management
-            { id: 'node-cleaning', x: 800, y: 275 }, // Cleaning
-            { id: 'node-sharing', x: 800, y: 350 }, // Sharing
-            { id: 'node-analysis', x: 800, y: 425 }, // Analysis
-            { id: 'node-reporting', x: 800, y: 500 }  // Reporting
-        ];
-
+    <div class="page" id="page7">
+        <div class="mindmapResearch">
+            <a href="https://www.flaticon.com/free-icons/dashboard" title="dashboard icons">Dashboard icons created by Eucalyp - Flaticon</a>
+        </div>
+        <div class="mindmapData">
+            
+        </div>
         
-        function createLine(x1, y1, x2, y2, nodeId1, nodeId2) {
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            const curveX = (x1 + x2) / 2;
-            const curveY = (y1 + y2) / 1.5 - 100;
-            path.setAttribute('d', `M${x1},${y1} Q${curveX},${curveY} ${x2},${y2}`);
-            path.setAttribute('class', 'line');
-            path.addEventListener('mouseover', () => {
-                document.getElementById(nodeId1).style.backgroundColor = 'limegreen';
-                document.getElementById(nodeId2).style.backgroundColor = 'limegreen';
-            });
-            path.addEventListener('mouseout', () => {
-                document.getElementById(nodeId1).style.backgroundColor = '';
-                document.getElementById(nodeId2).style.backgroundColor = '';
-            });
-            svg.appendChild(path);
-        }
-
-
-        // Research to nodes
-        nodes.slice(2, 8).forEach(node => createLine(nodes[0].x, nodes[0].y, node.x, node.y, nodes[0].id, node.id));
-        
-        // Data to nodes
-        nodes.slice(8, 14).forEach(node => createLine(nodes[1].x, nodes[1].y, node.x, node.y, nodes[1].id, node.id));
-
-
-    </script>
-</body>
-</html>
-
-
-
-
-
-
-
-
-<!-- Old HTML file below-->
-
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RaDO</title>
-    <link rel="stylesheet" href="https://mwiingac.github.io/RaDO/styles.css">
-</head>
-<body>
-    
-    <div id="mindmap">
-        <div class="node" id="rado">RaDO</div>
-        <div class="node" id="research">Research</div>
-        <div class="node" id="data">Data</div>
-        
-        <div class="node" id="project-open">Project Open</div>
-        <div class="node" id="survey-dev">Survey Dev.</div>
-        <div class="node" id="survey-prep">Survey Prep.</div>
-        <div class="node" id="survey">Survey</div>
-        <div class="node" id="post-survey">Post Survey</div>
-        <div class="node" id="project-close">Project Close</div>
-        
-        <div class="node" id="collection">Collection</div>
-        <div class="node" id="management">Management</div>
-        <div class="node" id="cleaning">Cleaning</div>
-        <div class="node" id="sharing">Sharing</div>
-        <div class="node" id="analysis">Analysis</div>
-        <div class="node" id="reporting">Reporting</div>
-        
-        <svg id="lines"></svg>
     </div>
-    <script src="https://mwiingac.github.io/RaDO/scripts.js"></script>
+
+    <script src="main.js"></script>
+
+    
+
 </body>
+
 </html>
--->
