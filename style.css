@@ -129,10 +129,10 @@ body {
 	}
 
 	.mindmapResearch:hover .node {
-		background-color: #00f7ff;
+		background-color: #0ec6cc;
 	}
 	.mindmapData:hover .node {
-		background-color: #00f7ff;
+		background-color: #0ec6cc; /*00f7ff*/
 	}
 	
 
@@ -341,16 +341,16 @@ body {
 	
 	
 	.link:hover a {
-		background-color: #00f7ff;
-		border: 0px solid #00f7ff;
-		box-shadow: 0 0 7px #00f7ff; /* Add some glow */
+		background-color: #0ec6cc;
+		border: 0px solid #0ec6cc;
+		box-shadow: 0 0 7px #0ec6cc; /* Add some glow */
 		
 	}
 
 	.linkR:hover a {
-		background-color: #00f7ff;
-		border: 0px solid #00f7ff;
-		box-shadow: 0 0 7px #00f7ff; /* CF9A58 Add some glow */
+		background-color: #0ec6cc;
+		border: 0px solid #0ec6cc;
+		box-shadow: 0 0 7px #0ec6cc; /* CF9A58 Add some glow */
 		
 	}
 
@@ -380,15 +380,15 @@ body {
 	}
 	
 	.link:hover .nolink {
-		background-color: #00f7ff;
-		border: 0px solid #00f7ff;
-		box-shadow: 0 0 7px #00f7ff; /* Add some glow */
+		background-color: #0ec6cc;
+		border: 0px solid #0ec6cc;
+		box-shadow: 0 0 7px #0ec6cc; /* Add some glow */
 	}
 
 	.linkR:hover .nolink {
-		background-color: #00f7ff;
-		border: 0px solid #00f7ff;
-		box-shadow: 0 0 7px #00f7ff; /* Add some glow */
+		background-color: #0ec6cc;
+		border: 0px solid #0ec6cc;
+		box-shadow: 0 0 7px #0ec6cc; /* Add some glow */
 	}
 	
 
