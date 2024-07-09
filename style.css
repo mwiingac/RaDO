@@ -119,6 +119,16 @@ body {
 
 	.cursor__ball {
 		position: fixed;
+		left: 0px;
+		top: 0px;
+		z-index: 100;
+	}
+
+
+	.cursor__icon {
+		position: fixed;
+		left: 10px;
+		top: 10px;
 		z-index: 1000;
 	}
   
@@ -216,6 +226,14 @@ body {
 		transition: 0.7s ease-in-out;
 		z-index: 2;
 
+	}
+
+	.author {
+		position: fixed;
+		right: 5%;
+		bottom: 1.5%;
+		font-size: 10px;
+		color: #000000;
 	}
 
 	.mindmapData:hover .dataLiner {

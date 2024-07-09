@@ -32,10 +32,10 @@ function updateCursorPositions() {
   const scrollX = window.scrollX;
   const scrollY = window.scrollY;
   TweenMax.to($bigBall, .2, {
-    x: mouseX + scrollX - 15,
-    y: mouseY + scrollY - 15
+    x: mouseX + scrollX - 10,
+    y: mouseY + scrollY - 10
   });
-  TweenMax.to($smallBall, .1, {
+  TweenMax.to($smallBall, .4, {
     x: mouseX + scrollX - 10,
     y: mouseY + scrollY - 10
   });
