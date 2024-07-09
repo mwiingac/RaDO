@@ -230,8 +230,8 @@ body {
 
 	.author {
 		position: fixed;
-		right: 5%;
-		bottom: 1.5%;
+		left: 87vw;
+		top: 95vh;
 		font-size: 10px;
 		color: #000000;
 	}
