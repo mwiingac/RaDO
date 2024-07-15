@@ -66,20 +66,26 @@ body {
 
 	.projectlifecycle {
 		position: fixed; 
-		top: 2.5%; 
-		left: 23%; 
-		color: #000000; 
+		top: 35%; 
+		left: 1%; 
+		color: #b6b6b6; 
 		font-size: 12;
 		font-weight: 1000;
+		display: flex;
+		align-items: center;
+		text-align: center;
 	}
 
 	.dataworkflow {
 		position: fixed; 
-		top: 2.5%; 
-		right: 23%; 
-		color: #000000; 
+		top: 35%; 
+		right: 1%; 
+		color: #b6b6b6; 
 		font-size: 12;
 		font-weight: 1000;
+		display: flex;
+		align-items: center;
+		text-align: center;
 	}
 	
 	
@@ -156,12 +162,14 @@ body {
 
 	}
 
+	/*
 	.mindmapResearch:hover .node {
 		background-color: #0ec6cc;
 	}
 	.mindmapData:hover .node {
-		background-color: #0ec6cc; /*00f7ff*/
+		background-color: #0ec6cc; 
 	}
+	*/
 	
 
 	.researchLiner {
@@ -233,7 +241,7 @@ body {
 		left: 80vw;
 		top: 95vh;
 		font-size: 10px;
-		color: #000000;
+		color: #b6b6b6;
 	}
 
 	.mindmapData:hover .dataLiner {
@@ -279,18 +287,23 @@ body {
 		width: 100%;
 		right: 0%;
 		padding-bottom: 5px;
-        color: #000000; /*color: #929292;*/
+        color: #7e7e7e; /*color: #929292;*/
         transition: 0.5s ease-in-out;
 		text-align: right;
 		vertical-align: middle;
 		overflow: hidden;
+		/*
+		opacity: 0;
+  		transform: translateY(20px);
+  		transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+		*/
 	}
 
 	.linkR:hover {
-		-webkit-transform: scale(1.025); 
-		-ms-transform: scale(1.025); 
-		transform: scale(1.025);
-		color: #ffffff;
+		-webkit-transform: scale(1.015); 
+		-ms-transform: scale(1.015); 
+		transform: scale(1.015);
+		color: #000000;
 		overflow: visible;
 	}
 
@@ -315,7 +328,7 @@ body {
 		justify-content: right;
 		justify-items: right;
 		background-color: inherit;
-		color: #ffffff;
+		color: #000000;
 	}
 
 	.link {
@@ -324,7 +337,7 @@ body {
 		width: 100%;
 		left: 0vw;
 		padding-bottom: 5px;
-        color: #000000;
+        color: #7e7e7e;
         transition: 0.5s ease-in-out;
 		text-align: left;
 		vertical-align: middle;
@@ -332,10 +345,10 @@ body {
 	}
 
 	.link:hover {
-		-webkit-transform: scale(1.025); 
-		-ms-transform: scale(1.025); 
-		transform: scale(1.025);
-		color: #ffffff;
+		-webkit-transform: scale(1.015); 
+		-ms-transform: scale(1.015); 
+		transform: scale(1.015);
+		color: #000000;
 		overflow: visible;
 	}
 
@@ -358,7 +371,7 @@ body {
 		align-items: left;
 		text-align: left;
 		background-color: inherit;
-		color: #ffffff;
+		color: #000000;
 	}
 	
 
@@ -377,16 +390,16 @@ body {
 	
 	
 	.link:hover a {
-		background-color: #0ec6cc;
-		border: 0px solid #0ec6cc;
-		box-shadow: 0 0 7px #0ec6cc; /* Add some glow */
+		background-color: #EFC3A4; /* #64faff; */
+		border: 0px solid #EFC3A4;
+		box-shadow: 0 0 7px #EFC3A4; /* Add some glow */
 		
 	}
 
 	.linkR:hover a {
-		background-color: #0ec6cc;
-		border: 0px solid #0ec6cc;
-		box-shadow: 0 0 7px #0ec6cc; /* CF9A58 Add some glow */
+		background-color: #EFC3A4;
+		border: 0px solid #EFC3A4;
+		box-shadow: 0 0 7px #EFC3A4; /* CF9A58 Add some glow */
 		
 	}
 
@@ -416,15 +429,15 @@ body {
 	}
 	
 	.link:hover .nolink {
-		background-color: #0ec6cc;
-		border: 0px solid #0ec6cc;
-		box-shadow: 0 0 7px #0ec6cc; /* Add some glow */
+		background-color: #EFC3A4;
+		border: 0px solid #EFC3A4;
+		box-shadow: 0 0 7px #EFC3A4; /* Add some glow */
 	}
 
 	.linkR:hover .nolink {
-		background-color: #0ec6cc;
-		border: 0px solid #0ec6cc;
-		box-shadow: 0 0 7px #0ec6cc; /* Add some glow */
+		background-color: #EFC3A4;
+		border: 0px solid #EFC3A4;
+		box-shadow: 0 0 7px #EFC3A4; /* Add some glow */
 	}
 	
 
@@ -442,12 +455,12 @@ body {
 	.mindmapResearch:hover .nodeUnderResearch {
 
 		border-radius: 0%; /* Make it circular */
-		box-shadow: 0 0 15px #ffffff; /* Add some glow */
+		/*box-shadow: 0 0 15px #ffffff;  Add some glow */
 		z-index: 10;
 
 	}
 
-
+	
 	.nodeUnderData {
 		position: absolute;
 		width: 1.5vw;
@@ -456,12 +469,11 @@ body {
 		top: 30vh; 
 		border-radius: 0%;
 		transition: 0.5s ease-in-out;
-
 	}
 
 	.mindmapData:hover .nodeUnderData {
 		border-radius: 0%; /* Make it circular */
-		box-shadow: 0 0 15px #ffffff; /* Add some glow */
+		/* box-shadow: 0 0 15px #ffffff;  Add some glow */
 		z-index: 10;
 	}
 
@@ -477,7 +489,7 @@ body {
 		vertical-align: middle;
 		justify-content: center;
 		align-items: center;
-		color: #ffe0ca;
+		color: #bebebe;
 	}
 
 
@@ -485,28 +497,43 @@ body {
        
 	.research { 
 		right: 0.1vw; 
-		top: 0vh; 
-		height: 50px; 
-		width: 50px; 
+		top: 0px; 
+		height: 20px; 
+		width: 50px;
+		width: 0px;
 		/*border-radius: 100%; */
-		border-bottom-left-radius: 100%; 
+		border-bottom-left-radius: 0%; 
 		border: 0px dotted gray; 
 		background-color: #765E52; 
+		color: #faf0df;
 		font-size: 11px;
 		z-index: 5;
+		opacity: 0;
 	}
 
 	.data { 
 		left: 0vw; 
-		top: 0vh; 
-		height: 50px; 
-		width: 50px; 
+		top: 0px; 
+		height: 20px; 
+		width: 0px; 
 		/*border-radius: 100%; */
-		border-bottom-right-radius: 100%; 
+		border-bottom-right-radius: 0%; 
 		border: 0px dotted gray; 
-		background-color: #765E52; 
+		background-color: #765E52;
+		color: #faf0df;
 		font-size: 11px;
 		z-index: 5;
+		opacity: 0;
+	}
+
+	.mindmapData:hover .data {
+		opacity: 1;
+		width: 50px;
+	}
+
+	.mindmapResearch:hover .research {
+		opacity: 1;
+		width: 50px;
 	}
 
 
@@ -525,9 +552,9 @@ body {
 	}
 
 	.mindmapResearch:hover .project-open, .mindmapResearch:hover .survey-dev, .mindmapResearch:hover .survey-prep, .mindmapResearch:hover .survey, .mindmapResearch:hover .post-survey, .mindmapResearch:hover .project-close { 
-		color: #ffffff; 
+		color: #ffe0ca; 
 		border-radius: 0%; /* Make it circular */
-		box-shadow: 0 0 15px #765E52; /* Add some glow dd4141 */
+		/*box-shadow: 0 0 15px #765E52;  Add some glow dd4141 */
 		z-index: 10; 
 		border: 0px solid #765E52;
 		font-weight: 550;
@@ -566,9 +593,9 @@ body {
 	}
 
 	.mindmapData:hover .collection, .mindmapData:hover .management, .mindmapData:hover .cleaning, .mindmapData:hover .sharing, .mindmapData:hover .analysis, .mindmapData:hover .reporting { 
-		color: #ffffff; 
+		color: #ffe0ca; 
 		border-radius: 0%; /* Make it circular */
-		box-shadow: 0 0 15px #765E52; /* Add some glow */
+		/*box-shadow: 0 0 15px #765E52;  Add some glow */
 		z-index: 10;
 		border: 0px solid #CF9A58;
 		font-weight: 550;
